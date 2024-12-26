@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: white;
         }
         header {
             background-color: #4CAF50;
@@ -64,10 +64,34 @@
         .course-item a:hover {
             color: #45a049;
         }
-        .fee {
-            font-size: 1.1em;
-            color: #000;
-            margin-top: 5px;
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .menu-item {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .sub-menu {
+            display: none;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .menu-item:hover + .sub-menu {
+            display: block;
         }
         .contact-info {
             margin-top: 40px;
@@ -90,20 +114,6 @@
             border: 2px solid #ddd;
             border-radius: 8px;
         }
-        .sub-option {
-            display: none; /* Hide sub-options initially */
-            color: white;
-            background-color: #4CAF50;
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .show-sub-options:hover .sub-option {
-            display: block;
-        }
-        .show-sub-options {
-            cursor: pointer;
-        }
         @media screen and (max-width: 768px) {
             .course-item {
                 width: 100%;
@@ -120,57 +130,51 @@
     <header>
         <img src="https://images.app.goo.gl/UQQ9TSVJ96GCWeuN6" alt="10 Minute School Logo" class="logo">
         <h1>10 Minute School Online Courses</h1>
-        <p>আপনার দক্ষতা উন্নত করতে আমাদের কোর্সে ভর্তি হোন</p>
+        <p>আপনার স্বপ্ন পূরণের প্রথম পদক্ষেপ, আজই ভর্তি হন!</p>
     </header>
 
     <div class="container">
         <h2>অনলাইন ব্যাচ ২০২৫ - ৬ষ্ঠ থেকে ১০ম শ্রেণি</h2>
 
-        <!-- 6th Grade Options -->
-        <div class="course-section">
-            <h3 class="show-sub-options">৬ষ্ঠ শ্রেণির অনলাইন ব্যাচ</h3>
-            <div class="sub-option">
-                <div class="course-item">
-                    <h4>১ মাসের ফি</h4>
-                    <p class="fee">ফি: ২১৫০/=</p>
-                    <a href="https://tinyurl.com/yh27rxzz">Enroll Now</a>
-                </div>
-                <div class="course-item">
-                    <h4>৬ মাসের ফি</h4>
-                    <p class="fee">ফি: ১০,০০০/=</p>
-                    <a href="https://tinyurl.com/yeyn48ka">Enroll Now</a>
-                </div>
-                <div class="course-item">
-                    <h4>১ বছরের ফি</h4>
-                    <p class="fee">ফি: ১৩,০০০/=</p>
-                    <a href="https://tinyurl.com/4j39a9c3">Enroll Now</a>
+        <!-- Menu Section -->
+        <div class="menu">
+            <!-- Main Options with Sub-menu -->
+            <div class="menu-item" onclick="toggleSubMenu('sub1')">৬ষ্ঠ শ্রেণি</div>
+            <div id="sub1" class="sub-menu">
+                <p><a href="https://tinyurl.com/yh27rxzz">১ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/yeyn48ka">৬ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/4j39a9c3">১ বছরের ফি</a></p>
+            </div>
+
+            <div class="menu-item" onclick="toggleSubMenu('sub2')">৭ম শ্রেণি</div>
+            <div id="sub2" class="sub-menu">
+                <p><a href="https://tinyurl.com/yvknr4ya">১ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/mn2jtj86">৬ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/4jzhr3vs">১ বছরের ফি</a></p>
+            </div>
+
+            <div class="menu-item" onclick="toggleSubMenu('sub3')">৮ম শ্রেণি</div>
+            <div id="sub3" class="sub-menu">
+                <p><a href="https://tinyurl.com/4nmkywdv">১ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/57euuw72">৬ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/yy8s4ft8">১ বছরের ফি</a></p>
+            </div>
+
+            <div class="menu-item" onclick="toggleSubMenu('sub4')">৯ম শ্রেণি</div>
+            <div id="sub4" class="sub-menu">
+                <p><a href="https://tinyurl.com/3r524tdw">১ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/4fzt653z">৬ মাসের ফি</a></p>
+                <p><a href="https://tinyurl.com/4jsfp94k">১ বছরের ফি</a></p>
+            </div>
+
+            <div style="flex-basis: 100%; text-align: center;">
+                <div class="menu-item" onclick="toggleSubMenu('sub5')">১০ম শ্রেণি</div>
+                <div id="sub5" class="sub-menu">
+                    <p><a href="https://tinyurl.com/2ky59ndz">১ মাসের ফি</a></p>
+                    <p><a href="https://tinyurl.com/5n6u562j">১ বছরের ফি</a></p>
                 </div>
             </div>
         </div>
-
-        <!-- 7th Grade Options -->
-        <div class="course-section">
-            <h3 class="show-sub-options">৭ম শ্রেণির অনলাইন ব্যাচ</h3>
-            <div class="sub-option">
-                <div class="course-item">
-                    <h4>১ মাসের ফি</h4>
-                    <p class="fee">ফি: ২১৫০/=</p>
-                    <a href="https://tinyurl.com/yvknr4ya">Enroll Now</a>
-                </div>
-                <div class="course-item">
-                    <h4>৬ মাসের ফি</h4>
-                    <p class="fee">ফি: ১০,০০০/=</p>
-                    <a href="https://tinyurl.com/mn2jtj86">Enroll Now</a>
-                </div>
-                <div class="course-item">
-                    <h4>১ বছরের ফি</h4>
-                    <p class="fee">ফি: ১৩,০০০/=</p>
-                    <a href="https://tinyurl.com/4jzhr3vs">Enroll Now</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional Grade Options follow the same structure as above -->
 
         <!-- Contact Information -->
         <div class="contact-info">
@@ -182,10 +186,16 @@
         <!-- Video Section -->
         <div class="video-section">
             <h2>Watch Our Course Introduction Video</h2>
-            <!-- Embed YouTube Shorts Video -->
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/pCRPK-1w9o4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
+
+    <script>
+        function toggleSubMenu(id) {
+            var subMenu = document.getElementById(id);
+            subMenu.style.display = (subMenu.style.display === "block") ? "none" : "block";
+        }
+    </script>
 
 </body>
 </html>
