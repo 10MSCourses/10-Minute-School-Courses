@@ -21,7 +21,7 @@
         }
         h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 2.5em;
         }
         p {
             font-size: 1.2em;
@@ -33,7 +33,7 @@
             margin-top: 20px;
         }
         .menu-item {
-            background-color: red;
+            background-color: #FF5722;
             color: white;
             padding: 10px 20px;
             margin: 10px;
@@ -69,7 +69,7 @@
             margin: 10px 0;
         }
         .popup a:hover {
-            color: #45a049;
+            color: #388E3C;
         }
         .close-btn {
             position: absolute;
@@ -103,56 +103,46 @@
     </header>
 
     <div class="container">
-        <h2>অনলাইন ব্যাচ ২০২৫ - ৬ষ্ঠ থেকে ১০ম শ্রেণি</h2>
-
+        <h2>মেনু অপশন</h2>
         <div class="menu">
-            <!-- মেনু আইটেম -->
             <div class="menu-item" onclick="showPopup('popup1')">৬ষ্ঠ শ্রেণি</div>
             <div class="menu-item" onclick="showPopup('popup2')">৭ম শ্রেণি</div>
             <div class="menu-item" onclick="showPopup('popup3')">৮ম শ্রেণি</div>
             <div class="menu-item" onclick="showPopup('popup4')">৯ম শ্রেণি</div>
             <div class="menu-item" onclick="showPopup('popup5')">১০ম শ্রেণি</div>
+            <div class="menu-item" onclick="showPopup('popupVideo')">ভিডিও দেখুন</div>
+            <div class="menu-item" onclick="showPopup('popupContact')">যোগাযোগ করুন</div>
+            <div class="menu-item" onclick="showPopup('popupWhatsApp')">হোয়াটসঅ্যাপ লিংক</div>
         </div>
     </div>
 
     <!-- পপআপ উইন্ডো -->
+    <!-- ক্লাস পপআপ -->
     <div id="popup1" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
         <h2>৬ষ্ঠ শ্রেণি</h2>
-        <a href="https://tinyurl.com/yh27rxzz">১ মাসের জন্য</a>
-        <a href="https://tinyurl.com/yeyn48ka">৬ মাসের জন্য</a>
-        <a href="https://tinyurl.com/4j39a9c3">১ বছরের জন্য</a>
+        <a href="#">১ মাসের জন্য</a>
+        <a href="#">৬ মাসের জন্য</a>
+        <a href="#">১ বছরের জন্য</a>
     </div>
-
-    <div id="popup2" class="popup">
+    <!-- ভিডিও পপআপ -->
+    <div id="popupVideo" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>৭ম শ্রেণি</h2>
-        <a href="https://tinyurl.com/yvknr4ya">১ মাসের জন্য</a>
-        <a href="https://tinyurl.com/mn2jtj86">৬ মাসের জন্য</a>
-        <a href="https://tinyurl.com/4jzhr3vs">১ বছরের জন্য</a>
+        <h2>কোর্স ভিডিও</h2>
+        <a href="https://youtu.be/10MinuteSchool" target="_blank">ভিডিও দেখুন</a>
     </div>
-
-    <div id="popup3" class="popup">
+    <!-- যোগাযোগ -->
+    <div id="popupContact" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>৮ম শ্রেণি</h2>
-        <a href="https://tinyurl.com/4nmkywdv">১ মাসের জন্য</a>
-        <a href="https://tinyurl.com/57euuw72">৬ মাসের জন্য</a>
-        <a href="https://tinyurl.com/yy8s4ft8">১ বছরের জন্য</a>
+        <h2>যোগাযোগ করুন</h2>
+        <p>ফোন: +৮৮০১XXXXXXXX</p>
+        <p>ইমেইল: support@10minuteschool.com</p>
     </div>
-
-    <div id="popup4" class="popup">
+    <!-- হোয়াটসঅ্যাপ লিংক -->
+    <div id="popupWhatsApp" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>৯ম শ্রেণি</h2>
-        <a href="https://tinyurl.com/3r524tdw">১ মাসের জন্য</a>
-        <a href="https://tinyurl.com/4fzt653z">৬ মাসের জন্য</a>
-        <a href="https://tinyurl.com/4jsfp94k">১ বছরের জন্য</a>
-    </div>
-
-    <div id="popup5" class="popup">
-        <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>১০ম শ্রেণি</h2>
-        <a href="https://tinyurl.com/2ky59ndz">১ মাসের জন্য</a>
-        <a href="https://tinyurl.com/5n6u562j">পুরো বছরের জন্য</a>
+        <h2>হোয়াটসঅ্যাপ লিংক</h2>
+        <a href="https://wa.me/8801XXXXXXXX" target="_blank">হোয়াটসঅ্যাপে মেসেজ পাঠান</a>
     </div>
 
     <!-- ওভারলে -->
