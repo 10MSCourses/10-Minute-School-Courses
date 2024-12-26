@@ -4,27 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 Minute School Online Courses</title>
-    <meta name="description" content="10 Minute School Online Courses with highest discounts. Enroll Now!">
-    <meta name="keywords" content="online courses, 10 Minute School, classes, 6th grade to 10th grade, discounts">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: white;
+            background-color: #f9f9f9;
         }
         header {
             background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 20px 0;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        p {
-            font-size: 1.2em;
         }
         .menu {
             display: flex;
@@ -37,10 +28,9 @@
             color: white;
             padding: 10px 20px;
             margin: 10px;
-            cursor: pointer;
             border-radius: 5px;
+            cursor: pointer;
             text-align: center;
-            font-size: 18px;
         }
         .popup {
             display: none;
@@ -51,22 +41,21 @@
             width: 80%;
             max-width: 400px;
             background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             z-index: 1000;
         }
         .popup h2 {
-            margin-top: 0;
             text-align: center;
             color: #4CAF50;
         }
         .popup a {
+            display: block;
+            margin: 10px 0;
             color: #4CAF50;
             text-decoration: none;
             font-weight: bold;
-            display: block;
-            margin: 10px 0;
         }
         .popup a:hover {
             color: #388E3C;
@@ -99,50 +88,78 @@
 <body>
     <header>
         <h1>10 Minute School Online Courses</h1>
-        <p>আপনার স্বপ্ন পূরণের প্রথম পদক্ষেপ, আজই ভর্তি হন!</p>
     </header>
 
-    <div class="container">
-        <h2>মেনু অপশন</h2>
-        <div class="menu">
-            <div class="menu-item" onclick="showPopup('popup1')">৬ষ্ঠ শ্রেণি</div>
-            <div class="menu-item" onclick="showPopup('popup2')">৭ম শ্রেণি</div>
-            <div class="menu-item" onclick="showPopup('popup3')">৮ম শ্রেণি</div>
-            <div class="menu-item" onclick="showPopup('popup4')">৯ম শ্রেণি</div>
-            <div class="menu-item" onclick="showPopup('popup5')">১০ম শ্রেণি</div>
-            <div class="menu-item" onclick="showPopup('popupVideo')">ভিডিও দেখুন</div>
-            <div class="menu-item" onclick="showPopup('popupContact')">যোগাযোগ করুন</div>
-            <div class="menu-item" onclick="showPopup('popupWhatsApp')">হোয়াটসঅ্যাপ লিংক</div>
-        </div>
+    <div class="menu">
+        <div class="menu-item" onclick="showPopup('popup6')">৬ষ্ঠ শ্রেণি</div>
+        <div class="menu-item" onclick="showPopup('popup7')">৭ম শ্রেণি</div>
+        <div class="menu-item" onclick="showPopup('popup8')">৮ম শ্রেণি</div>
+        <div class="menu-item" onclick="showPopup('popup9')">৯ম শ্রেণি</div>
+        <div class="menu-item" onclick="showPopup('popup10')">১০ম শ্রেণি</div>
+        <div class="menu-item" onclick="showPopup('popupVideo')">ভিডিও</div>
+        <div class="menu-item" onclick="showPopup('popupContact')">যোগাযোগ</div>
+        <div class="menu-item" onclick="showPopup('popupWhatsApp')">হোয়াটসঅ্যাপ লিংক</div>
     </div>
 
-    <!-- পপআপ উইন্ডো -->
-    <!-- ক্লাস পপআপ -->
-    <div id="popup1" class="popup">
+    <!-- পপআপ -->
+    <!-- ৬ষ্ঠ শ্রেণি -->
+    <div id="popup6" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
         <h2>৬ষ্ঠ শ্রেণি</h2>
-        <a href="#">১ মাসের জন্য</a>
-        <a href="#">৬ মাসের জন্য</a>
-        <a href="#">১ বছরের জন্য</a>
+        <a href="#">১ মাসের কোর্স</a>
+        <a href="#">৬ মাসের কোর্স</a>
+        <a href="#">১ বছরের কোর্স</a>
     </div>
-    <!-- ভিডিও পপআপ -->
+    <!-- ৭ম শ্রেণি -->
+    <div id="popup7" class="popup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2>৭ম শ্রেণি</h2>
+        <a href="#">১ মাসের কোর্স</a>
+        <a href="#">৬ মাসের কোর্স</a>
+        <a href="#">১ বছরের কোর্স</a>
+    </div>
+    <!-- ৮ম শ্রেণি -->
+    <div id="popup8" class="popup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2>৮ম শ্রেণি</h2>
+        <a href="#">১ মাসের কোর্স</a>
+        <a href="#">৬ মাসের কোর্স</a>
+        <a href="#">১ বছরের কোর্স</a>
+    </div>
+    <!-- ৯ম শ্রেণি -->
+    <div id="popup9" class="popup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2>৯ম শ্রেণি</h2>
+        <a href="#">১ মাসের কোর্স</a>
+        <a href="#">৬ মাসের কোর্স</a>
+        <a href="#">১ বছরের কোর্স</a>
+    </div>
+    <!-- ১০ম শ্রেণি -->
+    <div id="popup10" class="popup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2>১০ম শ্রেণি</h2>
+        <a href="#">১ মাসের কোর্স</a>
+        <a href="#">৬ মাসের কোর্স</a>
+        <a href="#">১ বছরের কোর্স</a>
+    </div>
+    <!-- ভিডিও -->
     <div id="popupVideo" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>কোর্স ভিডিও</h2>
+        <h2>ভিডিও</h2>
         <a href="https://youtu.be/10MinuteSchool" target="_blank">ভিডিও দেখুন</a>
     </div>
     <!-- যোগাযোগ -->
     <div id="popupContact" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>যোগাযোগ করুন</h2>
+        <h2>যোগাযোগ</h2>
         <p>ফোন: +৮৮০১XXXXXXXX</p>
         <p>ইমেইল: support@10minuteschool.com</p>
     </div>
-    <!-- হোয়াটসঅ্যাপ লিংক -->
+    <!-- হোয়াটসঅ্যাপ -->
     <div id="popupWhatsApp" class="popup">
         <button class="close-btn" onclick="closePopup()">✖</button>
-        <h2>হোয়াটসঅ্যাপ লিংক</h2>
-        <a href="https://wa.me/8801XXXXXXXX" target="_blank">হোয়াটসঅ্যাপে মেসেজ পাঠান</a>
+        <h2>হোয়াটসঅ্যাপ</h2>
+        <a href="https://wa.me/8801XXXXXXXX" target="_blank">মেসেজ পাঠান</a>
     </div>
 
     <!-- ওভারলে -->
@@ -155,8 +172,7 @@
         }
 
         function closePopup() {
-            const popups = document.querySelectorAll('.popup');
-            popups.forEach(popup => popup.style.display = 'none');
+            document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
             document.querySelector('.overlay').style.display = 'none';
         }
     </script>
