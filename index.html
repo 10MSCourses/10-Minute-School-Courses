@@ -18,13 +18,6 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            position: relative;
-        }
-        header .logo {
-            width: 50px;
-            position: absolute;
-            top: 20px;
-            right: 20px;
         }
         h1 {
             margin: 0;
@@ -89,6 +82,17 @@
             border-radius: 20px;
             cursor: pointer;
             text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .menu-item:hover + .sub-menu {
             display: block;
@@ -128,7 +132,6 @@
 <body>
 
     <header>
-        <img src="https://images.app.goo.gl/UQQ9TSVJ96GCWeuN6" alt="10 Minute School Logo" class="logo">
         <h1>10 Minute School Online Courses</h1>
         <p>আপনার স্বপ্ন পূরণের প্রথম পদক্ষেপ, আজই ভর্তি হন!</p>
     </header>
