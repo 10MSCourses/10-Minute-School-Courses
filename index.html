@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACS Future School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Body and Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header (Navbar) Styling */
+        .navbar {
+            background-color: #ffffff;
+            color: #333;
+            padding: 5px 0; /* Very slim padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Even lighter shadow */
+            border-bottom: 1px solid #eee;
+        }
+
+        .navbar .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #6a0dad; /* Keep primary purple for logo text */
+            text-decoration: none;
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 25px; /* Adjust logo size based on your image */
+            vertical-align: middle;
+            margin-right: 6px;
+            border-radius: 3px;
+        }
+
+        .navbar .center-text {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #666;
+            padding: 0 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Desktop Navigation Links */
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Ensure it's always flex on desktop */
+            align-items: center;
+            padding-right: 15px;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .nav-links li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 4px 0;
+            display: block;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #6a0dad;
+            transform: translateY(-0.5px);
+        }
+
+        /* Submenu Styling (Desktop) */
+        .nav-links .dropdown-menu {
+            display: block; /* Changed to block for animation with max-height */
+            overflow: hidden; /* Hide overflowing content during animation */
+            max-height: 0; /* Initial state for animation */
+            position: absolute;
+            background-color: #f8f8f8;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1;
+            list-style: none;
+            padding: 0; /* No initial padding, will animate with max-height */
+            border-radius: 6px;
+            top: calc(100% + 3px);
+            left: 0;
+            opacity: 0; /* Fade in animation */
+            transform: translateY(5px); /* Slide down animation */
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out, padding 0.3s ease-out; /* Added padding to transition */
+        }
+
+        /* Desktop hover effect for dropdown */
+        .nav-links li.dropdown:hover .dropdown-menu {
+            max-height: 250px; /* Increased max-height to ensure all items show */
+            padding: 8px 0; /* Final padding */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-links .dropdown-menu li {
+            margin: 0;
+        }
+
+        .nav-links .dropdown-menu li a {
+            padding: 8px 15px;
+            white-space: nowrap;
+            font-weight: normal;
+            color: #333;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+            background-color: #eee;
+            color: #6a0dad;
+        }
+
+        /* Hamburger Menu (Hidden on Desktop by default) */
+        .hamburger {
+            display: none; /* Ensure it's always hidden on desktop */
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding-right: 15px;
+            color: #6a0dad;
+            width: 25px;
+            height: 25px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1001;
+        }
+
+        /* Hamburger icon lines */
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #6a0dad;
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+
+        /* Transform to X on active */
+        .hamburger.active span:nth-child(1) {
+            top: 8px;
+            transform: rotate(135deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            left: -30px;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-135deg);
+        }
+
+
+        /* Hero Section (Small Title Section) */
+        .hero-section {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: #fff;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-section p {
+            font-size: 0.9rem;
+            max-width: 550px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.2s;
+        }
+
+        /* Courses Section */
+        .courses-section {
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px; /* Add margin to separate from About section */
+        }
+
+        .courses-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #333; /* Black color for main heading */
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: scaleIn 0.4s ease-out forwards;
+            opacity: 0;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .course-card-content {
+            padding: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            color: #333; /* Black color for course title */
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .discount-details {
+            font-weight: bold;
+            color: #d63031;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .course-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .course-buttons a,
+        .course-buttons button {
+            display: block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .course-buttons .discount-link {
+            background-color: #ffc107; /* Amber */
+            color: #333;
+        }
+
+        .course-buttons .discount-link:hover {
+            background-color: #e6b100;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .course-buttons .whatsapp-button {
+            background-color: #28a745; /* Green for WhatsApp */
+            color: #fff;
+        }
+
+        .course-buttons .whatsapp-button i {
+            margin-right: 8px;
+        }
+
+        .course-buttons .whatsapp-button:hover {
+            background-color: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #fdfdfd; /* Very light background */
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .about-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .about-section p {
+            font-size: 1.05rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            line-height: 1.7;
+        }
+
+        .about-section .btn {
+            display: inline-block;
+            background-color: #6a0dad;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .about-section .btn:hover {
+            background-color: #530a8b;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #333; /* Black color for contact heading */
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            transition: color 0.2s ease, transform 0.1s ease;
+        }
+
+        .contact-method i {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: #6a0dad; /* Keep primary purple for contact icons */
+            transition: color 0.2s ease;
+        }
+
+        .contact-method:hover {
+            color: #6a0dad;
+            transform: translateY(-2px);
+        }
+
+        .contact-method:hover i {
+            color: #ffc107;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333; /* Dark gray footer */
+            color: #eee; /* Light text for footer */
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* Animations (existing) */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design (Mobile) */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 5px 0;
+            }
+            .navbar .logo {
+                font-size: 1.2rem;
+                padding-left: 10px;
+            }
+            .navbar .logo img {
+                height: 20px;
+                margin-right: 4px;
+            }
+            .navbar .center-text {
+                display: none;
+            }
+
+            /* Mobile Navigation Links */
+            .nav-links {
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                background-color: #ffffff;
+                position: absolute;
+                top: 35px; /* Adjusted based on slimmer navbar height */
+                left: 0;
+                padding-top: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show when active */
+                animation: slideDown 0.3s ease-out forwards;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links li a {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+                color: #333;
+            }
+
+            /* Mobile Submenu Styling with Animation */
+            .nav-links .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: #f0f0f0;
+                border-radius: 0;
+                padding-left: 20px;
+                opacity: 1;
+                transform: translateY(0);
+                display: block; /* Changed to block for animation with max-height */
+                max-height: 0; /* Initial state for animation */
+                overflow: hidden;
+                transition: max-height 0.3s ease-out; /* Only max-height for mobile for simplicity */
+            }
+
+            .nav-links li.dropdown.active .dropdown-menu {
+                max-height: 250px; /* Increased max height for mobile to ensure Class 10 shows */
+                padding: 0; /* No padding needed for mobile submenu max-height transition */
+            }
+
+            .nav-links .dropdown-menu li a {
+                padding: 10px 40px; /* Adjust padding for mobile submenu items */
+            }
+
+            /* Mobile Hamburger Menu */
+            .hamburger {
+                display: flex;
+                padding-right: 15px;
+            }
+
+            /* About Section Mobile Adjustments */
+            .about-section {
+                padding: 30px 15px;
+                margin-bottom: 20px;
+            }
+            .about-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .about-section p {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+            .about-section .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .courses-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+
+            .course-grid {
+                gap: 15px;
+            }
+
+            .course-card img {
+                height: 150px;
+            }
+
+            .course-card-content {
+                padding: 15px;
+            }
+
+            .course-card h3 {
+                font-size: 1.2rem;
+                color: #333;
+                margin-bottom: 8px;
+            }
+            .course-card p {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .discount-details {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+
+            .course-buttons a,
+            .course-buttons button {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+                border-radius: 4px;
+            }
+
+            .contact-section h2 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+
+            .contact-methods {
+                gap: 20px;
+            }
+            .contact-method {
+                font-size: 0.9rem;
+            }
+            .contact-method i {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="acs.png" class="logo">
+            <img src="https://via.placeholder.com/25x25/6a0dad/FFFFFF?text=ACS" alt="ACS Future School Logo">
+            ACS Future School
+        </a>
+        <div class="center-text">শিক্ষা ভবিষ্যতের ভিত্তি</div>
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul class="nav-links" id="nav-links-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown" id="course-dropdown">
+                    <a href="#">Courses <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="6.html">Class 6</a></li>
+                        <li><a href="7.html">Class 7</a></li>
+                        <li><a href="8.html">Class 8</a></li>
+                        <li><a href="9.html">Class 9</a></li>
+                        <li><a href="10.html">Class 10</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero-section">
+            <div class="container">
+                <h1>ACS Future School Academic Program </h1>
+                <p>🎯 Enroll now with discount – link below!</p>
+            </div>
+        </section>
+
+        <section class="courses-section">
+            <div class="container">
+                <h2 style="color: #333;"> Academic Programs🚀</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x200/6a0dad/FFFFFF?text=Class+6+Course" alt="ACS Future School Class-6">
+                        <div class="course-card-content">
+                            <h3 style="color: #333;">Academic program class-6</h3>
+                            <p>৬ষ্ঠ শ্রেণীর শিক্ষার্থীদের জন্য সম্পূর্ণ প্রস্তুতিমূলক কোর্স।</p>
+                            <div class="discount-details">৫০% পর্যন্ত ছাড়! সীমিত সময়ের জন্য।</div>
+                            <div class="course-buttons">
+                                <a href="#" class="discount-link">ডিসকাউন্ট লিংক</a>
+                                <a href="https://wa.me/8801778682815?text=কোর্স সম্পর্কে বিস্তারিত জানতে চাই।" target="_blank" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp এ যোগাযোগ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x200/6a0dad/FFFFFF?text=Class+7+Course" alt="ACS Future School Class-7">
+                        <div class="course-card-content">
+                            <h3 style="color: #333;">Academic program class-7</h3>
+                            <p>৭ম শ্রেণীর শিক্ষার্থীদের জন্য সম্পূর্ণ প্রস্তুতিমূলক কোর্স।</p>
+                            <div class="discount-details">২৫% ফ্ল্যাট ডিসকাউন্ট!</div>
+                            <div class="course-buttons">
+                                <a href="#" class="discount-link">ডিসকাউন্ট লিংক</a>
+                                <a href="https://wa.me/8801778682815?text=কোর্স সম্পর্কে বিস্তারিত জানতে চাই।" target="_blank" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp এ যোগাযোগ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x200/6a0dad/FFFFFF?text=Class+8+Course" alt="ACS Future School Class-8">
+                        <div class="course-card-content">
+                            <h3 style="color: #333;">Academic program class-8</h3>
+                            <p>৮ম শ্রেণীর শিক্ষার্থীদের জন্য সম্পূর্ণ প্রস্তুতিমূলক কোর্স।</p>
+                            <div class="discount-details">প্রথম ৫০ জন শিক্ষার্থীকে ৩০% ছাড়!</div>
+                            <div class="course-buttons">
+                                <a href="#" class="discount-link">ডিসকাউন্ট লিংক</a>
+                                <a href="https://wa.me/8801778682815?text=কোর্স সম্পর্কে বিস্তারিত জানতে চাই।" target="_blank" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp এ যোগাযোগ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://images.app.goo.gl/26ybpKMrS4AEYqxLA" alt="ACS Future School Class-9">
+                        <div class="course-card-content">
+                            <h3 style="color: #333;">Academic program class-9</h3>
+                            <p>৯ম শ্রেণীর শিক্ষার্থীদের জন্য সম্পূর্ণ প্রস্তুতিমূলক কোর্স।</p>
+                            <div class="discount-details">শিক্ষকদের জন্য ২০% অতিরিক্ত ছাড়!</div>
+                            <div class="course-buttons">
+                                <a href="#" class="discount-link">ডিসকাউন্ট লিংক</a>
+                                <a href="https://wa.me/8801778682815?text=কোর্স সম্পর্কে বিস্তারিত জানতে চাই।" target="_blank" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp এ যোগাযোগ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x200/6a0dad/FFFFFF?text=Class+10+Course" alt="ACS Future School Class-10">
+                        <div class="course-card-content">
+                            <h3 style="color: #333;">Academic program class-10</h3>
+                            <p>১০ম শ্রেণীর শিক্ষার্থীদের জন্য সম্পূর্ণ প্রস্তুতিমূলক কোর্স।</p>
+                            <div class="discount-details">গ্রুপ ভর্তিতে ১০% ছাড়!</div>
+                            <div class="course-buttons">
+                                <a href="#" class="discount-link">ডিসকাউন্ট লিংক</a>
+                                <a href="https://wa.me/8801778682815?text=কোর্স সম্পর্কে বিস্তারিত জানতে চাই।" target="_blank" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp এ যোগাযোগ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <h2>আমাদের সম্পর্কে জানুন</h2>
+                <p>ACS ফিউচার স্কুল আপনার সন্তানের জন্য একটি আধুনিক এবং কার্যকরী শিক্ষার পরিবেশ নিশ্চিত করে। আমরা প্রতিটি শিক্ষার্থীর মেধা বিকাশে আগ্রহী এবং তাদের উজ্জ্বল ভবিষ্যৎ গড়ার লক্ষ্যে কাজ করি। আমাদের অভিজ্ঞ শিক্ষক মণ্ডলী এবং যুগোপযোগী পাঠ্যক্রম শিক্ষার্থীদের সফলতার পথে এগিয়ে নিয়ে যায়।</p>
+                <a href="#" class="btn">বিস্তারিত জানুন</a>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <h2 style="color: #333;">Contact with us</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/8801778682815" target="_blank" class="contact-method">
+                        <i class="fab fa-whatsapp" style="color: #28a745;"></i>
+                        <span>WhatsApp: +880 1778682815</span>
+                    </a>
+                    <a href="mailto:afsaffiliate@gmail.com" class="contact-method">
+                        <i class="fas fa-envelope" style="color: #d44638;"></i>
+                        <span>Email: afsaffiliate@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Affiliate of ACS Future School । সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links-menu');
+            const dropdown = document.getElementById('course-dropdown'); // The li.dropdown element
+            const dropdownToggle = dropdown.querySelector('a'); // The 'কোর্স' link itself
+
+            // Function to close the mobile navigation menu
+            function closeMobileNav() {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                dropdown.classList.remove('active'); // Also close submenu if open
+            }
+
+            // Toggle mobile menu and hamburger icon
+            hamburger.addEventListener('click', function(event) {
+                // No stopPropagation here, as we want it to bubble up to the document listener
+                // if the menu is already open and we click hamburger again to close it.
+                // The document listener will then handle the closing.
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                // If the main menu is closed, ensure dropdown is also closed
+                if (!navLinks.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                }
+            });
+
+            // Toggle dropdown on mobile when 'কোর্স' link is clicked
+            dropdownToggle.addEventListener('click', function(event) {
+                // Only toggle if on a mobile/tablet screen AND the main nav menu is active
+                if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                    event.preventDefault(); // Prevent default link behavior
+                    event.stopPropagation(); // Prevent this click from closing the main menu via document listener
+                    dropdown.classList.toggle('active'); // Toggle 'active' class on dropdown parent (li)
+                }
+            });
+
+            // Close mobile menu when a non-dropdown link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Check if it's a regular navigation link (not the dropdown toggle)
+                    // or a submenu item link
+                    if (window.innerWidth <= 768 && link !== dropdownToggle) {
+                        closeMobileNav();
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking anywhere outside the navbar or hamburger
+            document.addEventListener('click', function(event) {
+                // Check if the clicked target is outside the navigation links and outside the hamburger
+                if (window.innerWidth <= 768 && !navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                    closeMobileNav();
+                }
+            });
+
+            // Close mobile menu if resized to desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileNav();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
