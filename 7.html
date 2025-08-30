@@ -343,6 +343,176 @@
             .pack-card { margin-bottom: 0; }
         }
     </style>
+      <style>
+    /* Installment Section Styles */
+    .installment-section {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .installment-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .installment-section h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    .installment-section h2::after {
+        content: '';
+        width: 80px;
+        height: 4px;
+        background-color: #6a0dad;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    .installment-section p {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    .installment-process {
+        text-align: left;
+    }
+
+    .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .process-steps li {
+        display: flex;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .process-steps li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-icon {
+        background-color: #6a0dad;
+        color: #fff;
+        width: 45px;
+        height: 45px;
+        min-width: 45px; /* Ensures icon doesn't shrink */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .step-content h3 {
+        font-size: 1.3rem;
+        color: #6a0dad;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .step-content p {
+        font-size: 1rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .payment-methods {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .payment-methods h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .payment-icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .payment-icons .icon {
+        width: 80px;
+        height: auto;
+        transition: transform 0.2s ease;
+    }
+
+    .payment-icons .icon:hover {
+        transform: scale(1.1);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .installment-container {
+            padding: 30px;
+        }
+
+        .installment-section h2 {
+            font-size: 2rem;
+        }
+
+        .installment-section p {
+            font-size: 1rem;
+        }
+
+        .process-steps li {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .step-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        .step-content h3 {
+            font-size: 1.2rem;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+        }
+
+        .payment-icons {
+            gap: 20px;
+        }
+        
+        .payment-icons .icon {
+            width: 60px;
+        }
+    }
+</style>
 </head>
 <body>
     <header class="navbar">
@@ -466,6 +636,49 @@
             </div>
         </div>
     </div>
+    <section class="installment-section">
+    <div class="installment-container">
+        <h2>কিস্তিতে ভর্তি প্রক্রিয়া</h2>
+        <p><b>ACS Future School class 7</b> এর যেকোনো একাডেমিক প্রোগ্রামে কিস্তিতে (Installment) ভর্তি হতে নিচের প্রসেসটা ফলো করুন। </p> 
+        <img src="instalment.jpg" alt="installment price">    
+        
+        <div class="installment-process">
+            <ul class="process-steps">
+                <li>
+                    <div class="step-icon">১</div>
+                    <div class="step-content">
+                        <h3>প্রথম কিস্তি পরিশোধ করুন</h3>
+                        <p>উপরের ছবি অনুযায়ী আমাদের বিকাশ/নগদে প্রথম কিস্তি পরিশোধ করুন।  
+                       <b> বিকাশ/নগদ নাম্বার: 01778682815</b></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-icon">২</div>
+                    <div class="step-content">
+                        <h3>ট্রানজেকশন আইডি/স্ক্রিনশট সংরক্ষণ করুন</h3>
+                        <p>পেমেন্ট সফল হলে আপনার ট্রানজেকশন / স্ক্রিনশটটি সংরক্ষণ করুন</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-icon">৩</div>
+                    <div class="step-content">
+                        <h3>তথ্য প্রদান</h3>
+                        <p>আপনার পেমেন্টের স্ক্রিনশট আর ভর্তির নাম্বারটি হুয়াট্স এপে দিন।
+                        <b>What'sapp: 01778682815</b> </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="payment-methods">
+            <h3>পেমেন্ট মেথড</h3>
+            <div class="payment-icons">
+                <img src="bkash.png" alt="bKash" class="icon">
+                <img src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png" alt="Nagad" class="icon">
+            </div>
+        </div>
+    </div>
+</section>
         
     <section class="features-section">
         <h2>এসিএস ফিউচার স্কুলে স্বাগতম</h2>
